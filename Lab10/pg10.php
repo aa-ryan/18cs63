@@ -42,7 +42,7 @@ if ($result->num_rows> 0)
 			echo "<td>". $row["usn"]."</td>";
 			echo "<td>". $row["name"]."</td>";
 			echo "<td>". $row["address"]."</td></tr>";
-			array_push($a,$row["address"]);
+			array_push($a,$row["usn"]);
 		}
 }
 else
@@ -70,9 +70,9 @@ if ($result->num_rows> 0)// output data of each row
 {
 	while($row = $result->fetch_assoc()) {
 		for($i=0;$i<$n;$i++) {
-			if($row["address"]== $a[$i]) {
+			if($row["usn"]== $a[$i]) {
 				$c[$i]=$row["name"];
-				$d[$i]=$row["usn"];
+				$d[$i]=$row["address"];
 			}
 		}
 	}
@@ -84,9 +84,9 @@ echo "<tr>";
 echo "<th>USN</th><th>NAME</th><th>Address</th></tr>";
 for($i=0;$i<$n;$i++) {
 	echo "<tr>";
-	echo "<td>". $d[$i]."</td>";
+	echo "<td>". $a[$i]."</td>";
 	echo "<td>". $c[$i]."</td>";
-	echo "<td>". $a[$i]."</td></tr>";
+	echo "<td>". $d[$i]."</td></tr>";
 }
 echo "</table>";
 $conn->close();
